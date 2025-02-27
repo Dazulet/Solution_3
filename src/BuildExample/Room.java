@@ -16,6 +16,10 @@ public class Room {
         public String getDescription() {
             return description;
         }
+
+    public Object cloneEntity() {
+        return null;
     }
+}
 
 
