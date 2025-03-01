@@ -2,12 +2,13 @@ package BuildExample;
 
 public class MUDBuilderDemo {
     public static void main(String[] args) {
-        IDungeonBuilder builder = new SimpleDungeonBuilder()
-                .setDungeonName("simple dungeon")
-                .addRoom(new Room("Library ", "Here thera are a lot of books"))
-                .addNPC(new Npc("Goblin", "its a small green mobs", 30));
+        IDungeonBuilder builder = new SimpleDungeonBuilder();
+        Dungeon dd = builder
+                .setDungeonName("Simple Dungeon")
+                .addRoom(new Room("Library", "Here there are a lot of books"))
+                .addNPC(new Npc("Goblin", "It's a small green mob", 30))
+                .build();
 
-        Dungeon dungeon = builder.build();
-        dungeon.displayDungeon();
+        dd.displayDungeon();
     }
 }

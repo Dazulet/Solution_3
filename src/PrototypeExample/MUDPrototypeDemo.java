@@ -8,7 +8,7 @@ public class MUDPrototypeDemo {
         NPC prototypeNPC = new NPC("goblin", "a small green mobs.", 50);
         NPC clonedNPC = prototypeNPC.cloneEntity();
 
-        clonedNPC = new NPC("leader goblin", "a smart goblin.", 75);
+        prototypeNPC.setName("leader goblin");
 
         System.out.println("Original Room: " + prototypeRoom);
         System.out.println("Cloned Room: " + clonedRoom);

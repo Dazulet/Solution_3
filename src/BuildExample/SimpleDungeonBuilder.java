@@ -4,27 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleDungeonBuilder implements IDungeonBuilder {
-    private String name;
-    private List<Room> rooms = new ArrayList<>();
-    private List<Npc> npcs = new ArrayList<>();
+    private Dungeon dungeon;
 
+    public SimpleDungeonBuilder() {
+        dungeon = new Dungeon();
+    }
+
+    @Override
     public IDungeonBuilder setDungeonName(String name) {
-        this.name = name;
-        return  this;
+        dungeon.setName(name);
+        return this;
     }
 
     public IDungeonBuilder addRoom(Room room) {
-        rooms.add(room);
+        dungeon.getRooms().add(room);
         return this;
     }
 
     public IDungeonBuilder addNPC(Npc npc) {
-        npcs.add(npc);
-        return  this;
+        dungeon.getNpcs().add(npc);
+        return this;
     }
 
     public Dungeon build() {
-        return new Dungeon(name, rooms, npcs);
+        return dungeon;
     }
-
 }

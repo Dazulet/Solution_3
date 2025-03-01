@@ -1,23 +1,40 @@
 package MIX;
 
-import BuildExample.Dungeon;
-import BuildExample.IDungeonBuilder;
-import BuildExample.SimpleDungeonBuilder;
+import BuildExample.*;
+import BuildExample.Room;
 import PrototypeExample.*;
 
 public class MUDCombinedDemo {
     public static void main(String[] args) {
-        IDungeonBuilder builder = new SimpleDungeonBuilder()
-                .setDungeonName("solo leveling dange");
+        IDungeonBuilder builder = new SimpleDungeonBuilder();
+        Dungeon dd = builder
+                .setDungeonName("Simple Dungeon")
+                .addRoom(new Room("Library", "Here there are a lot of books"))
+                .addRoom(new Room("Boss Room", "A dangerous enemy lurks here"))
+                .addNPC(new Npc("Goblin", "It's a small green mob", 30))
+                .addNPC(new Npc("Orc", "A strong big goblin", 100))
+                .build();
 
-        Dungeon dungeon = builder.build();
-        dungeon.displayDungeon();
+        Dungeon clonedDungeon = dd.cloneEntity();
 
-        Room originalRoom = new Room("boos room", "there is a strange boos ");
-        Room clonedRoom1 = (Room) originalRoom.cloneEntity();
-        Room clonedRoom2 = (Room) originalRoom.cloneEntity();
+        Room clonedRoom = dd.cloneRoom(0);
 
-        System.out.println("Cloned Room 1 : " + clonedRoom1);
-        System.out.println("Cloned Room 2 : " + clonedRoom2);
+        Npc clonedNpc = dd.cloneNpc(1);
+clonedNpc.setName("Leader goblin");
+clonedNpc.setDescription("a smart goblin");
+        System.out.println("its origanal dangerous enemies");
+        dd.displayDungeon();
+        System.out.println();
+
+        System.out.println("copy dangeon ");
+        clonedDungeon.displayDungeon();
+        System.out.println();
+
+        System.out.println("copy room ");
+        System.out.println(clonedRoom);
+        System.out.println();
+
+        System.out.println("copy npc ");
+        System.out.println(clonedNpc);
     }
 }
